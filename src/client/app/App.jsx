@@ -37,9 +37,13 @@ export default class App extends React.Component{
             <container>
                 <header>
                     <Nav />
-                    <SearchForm />
                 </header>
-                <div className="container">
+                <section id="intro-area">
+                    <h1>Explore the wonders of New York.</h1>
+                    <h3>plan your next staycation</h3>
+                </section>
+                <SearchForm />
+                <section className="container">
                     <div className="row">
                         <PlayHere />
                     </div>
@@ -49,7 +53,7 @@ export default class App extends React.Component{
                     <div className="row">
                         <Results />
                     </div>
-                </div>
+                </section>
                 <Footer />
             </container>
         )

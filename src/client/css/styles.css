@@ -1,1 +1,18 @@
 body{ padding-top: 70px; }
+
+#intro-area{
+  background: linear-gradient(
+      rgba(99, 29, 150, 0.65),
+      rgba(41, 50, 60, 0.65)), url('http://fjordtours.blob.core.windows.net/fjordtours-umbraco/1199/gerirangerfjord-per-ottar-walderhaug-fjordnorway.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 400px;
+  text-align: center;
+}
+
+#intro-area h1{
+  font-size: 46px;
+  color: white;
+}
