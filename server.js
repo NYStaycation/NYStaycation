@@ -5,13 +5,13 @@
 
 
 
-const express     = require('express')
-const path        = require('path')
-const logger      = require('morgan')
-const bodyParser  = require('body-parser')
-const PORT        = process.env.PORT ||3000
-const app         = express()
-
+const express         = require('express')
+const path            = require('path')
+const logger          = require('morgan')
+const bodyParser      = require('body-parser')
+const PORT            = process.env.PORT ||3000
+const app             = express()
+const SearchRoute     = require ('./routes/search')
 
 
 
@@ -23,12 +23,7 @@ app.use(bodyParser.json())
 
 
 
-app.get('/', (req, res)=>{
-  res.send('Hello Home')
-})
-
-
-// app.use('/movie', movieRoutes);
+app.use('/search', SearchRoute);
 
 
 app.listen(PORT, ()=>{
