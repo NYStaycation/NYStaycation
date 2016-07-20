@@ -31,7 +31,7 @@ const handleSubmit = event=>{
   console.log(userSearch);
   //get a prop to pass usersearch object
 
-  // props.getMovieName(m_title);
+  props.getHotels(userSearch);
 
   event.target.reset();
 }
