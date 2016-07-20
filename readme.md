@@ -1,9 +1,9 @@
 #Introduction
 ===
 Have you ever wanted to go somewhere but you’re strapped for cash? Do you love New York and never want to leave?!
-​
-**NY Staycation** is your one stop place to help you figure out what you can do in whatever ```zip code``` you want to visit; with whatever ```budget``` you may have. 
-​
+
+**NY Staycation** is your one stop place to help you figure out what you can do in whatever ```zip code``` you'd like to visit; within whatever ```budget``` you set. 
+
 ##User Stories
   
 * Guests
@@ -12,7 +12,7 @@ Have you ever wanted to go somewhere but you’re strapped for cash? Do you love
   * Guest can view all apt/home to stay
   * Guest can add all activities, apt/home to create package
   * Guest can create an account 
-​
+
 * Users
  * User can login to his/her account
  * User can search based on Zipcode/postalcode, budget value
@@ -22,40 +22,50 @@ Have you ever wanted to go somewhere but you’re strapped for cash? Do you love
  * User can create a package deal
  * User can store that package deal in his/her account
  * User can view all deals he/she created
-​
-##Technologies
-​
+
+##Technologies Used
+
 * React- structure our front end
 * PSQL- store our data
 * Express- backend server
   
 ####APIs Used 
-​
-    * Foursquare  
-    * Airbnb
-​
+
+  * Foursquare  
+  * Airbnb
+
+
+
+
+
+
 ##General Approach
-​
-​
-​
+
+
+
 ##Installation Instructions
-​
-​
-​
+
+
+
 ##Wireframes
-​
-​
+The React Components:
+![App Components](http://i.imgur.com/ugpmvv9.png)
+
+Single Page App Wireframe Concept
+![wireframe](http://i.imgur.com/5IbZ2Gr.png)
+
+
 ##Unsolved Problems/ Open Issues
-​
-​
+
+
 ##References
-​
-​
-​
+
+
+
 ##Developers
-​
-[Sasha-Shae Weekes](https://github.com/afroniquely)
-[Supritkumar Shah](https://github.com/supritshah1289/)
-[Fizal Sarif](https://github.com/fizal619)
-[David Maul](https://github.com/dmaul12)
-​
+
+  * [Sasha-Shae Weekes](https://github.com/afroniquely)
+  * [Supritkumar Shah](https://github.com/supritshah1289/)
+  * [Fizal Sarif](https://github.com/fizal619)
+  * [David Maul](https://github.com/dmaul12)
+
