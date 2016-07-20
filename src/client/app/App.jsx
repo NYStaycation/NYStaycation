@@ -41,16 +41,23 @@ export default class App extends React.Component{
                 </header>
                 <div className="container">
                     <div className="row">
-                        <PlayHere />
-                    </div>
-                    <div className="row">
-                        <StayHere />
-                    </div>
-                    <div className="row">
-                        <Results />
+                        <article className="col-md-6">
+                            <PlayHere />
+                        </article>
+
+                        <article className="col-md-6">
+                            <StayHere />
+                        </article>
+
+                        <article className="col-md-6">
+                            <Results />
+                        </article>
+
                     </div>
                 </div>
+
                 <Footer />
+
             </container>
         )
     }
