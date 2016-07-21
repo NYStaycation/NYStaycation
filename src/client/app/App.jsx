@@ -26,7 +26,11 @@ export default class App extends React.Component{
 
         // here's our state
         this.state = {
-          Playhere : {},
+          Playhere : [{
+                        fromPrice: '',
+                        imageUrl: '',
+                        title: ''
+                    }],
           Stayhere : [{
                         name: '',
                         averageRate: '',
@@ -46,7 +50,10 @@ export default class App extends React.Component{
         console.log('Inside app getHotels',hotelSearch)
        ajax.searchHotels(hotelSearch).then( data=>{
             console.log(data)
-            this.setState({Stayhere: data})
+            this.setState({
+                Stayhere: data.hotels,
+                Playhere: data.activities
+            })
             }
         )
     }
@@ -68,15 +75,18 @@ export default class App extends React.Component{
                 />
                 <section className="container">
                     <div className="row">
-                        <PlayHere />
-                    </div>
-                    <div className="row">
-                        <StayHere
-                         places={this.state.Stayhere}
+                       <article className="col-md-6">
+                            <PlayHere
+                            play={this.state.Playhere}
+                            />
+                        </article>
 
-                        />
-                    </div>
-                    <div className="row">
+                        <article className="col-md-6">
+                            <StayHere
+                             places={this.state.Stayhere}
+                            />
+                        </article>
+
                         <Results />
                     </div>
                 </section>
