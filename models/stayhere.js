@@ -61,7 +61,7 @@ module.exports = {
                   //push that item to results
                   apiResults.push(item)
                   console.log('hotel',counter, 'out of',hotels.length)
-                  // if at the end of the array, call next to go to the next middleware
+                  // if at the end of the array, call next to go to the next middleware | THIS DEFINITLY RUNS
                   if(counter === hotels.length-1) {
                     res.results = {}
                     res.results.hotels = apiResults
