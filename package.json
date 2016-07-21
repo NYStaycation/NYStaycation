@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "clean": "rm -rf dist",
-    "watch" : "webpack --watch",
+    "watch": "webpack --watch",
     "prebuild": "npm run clean -s; npm install",
     "build": "webpack --progress --colors",
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -31,7 +31,9 @@
     "express": "^4.14.0",
     "morgan": "^1.7.0",
     "path": "^0.12.7",
-    "pg-promise": "^5.2.2"
+    "pg-promise": "^5.2.2",
+    "request": "^2.73.0",
+    "timers": "^0.1.1"
   },
   "devDependencies": {
     "babel": "^6.5.2",

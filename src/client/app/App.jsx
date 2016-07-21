@@ -9,10 +9,13 @@ import PlayHere         from './PlayHere.jsx'
 import StayHere         from './StayHere.jsx'
 import Results          from './Results.jsx'
 import SearchForm       from './SearchForm.jsx'
+import ajax                     from '../helpers/ajaxAdapter.js'
+
 
 
 // create a React Component called _App_
 export default class App extends React.Component{
+
 
     // every class gets a constructor.
     // this is where we init the state.
@@ -23,8 +26,18 @@ export default class App extends React.Component{
 
         // here's our state
         this.state = {
-          Playhere : {},
-          Stayhere : {},
+          Playhere : [{
+                        fromPrice: '',
+                        imageUrl: '',
+                        title: ''
+                    }],
+          Stayhere : [{
+                        name: '',
+                        averageRate: '',
+                        fullAddress: '',
+                        picture: '',
+                        link: ''
+                    }],
           Total: {}
         }
     }
@@ -32,6 +45,21 @@ export default class App extends React.Component{
 
     // 90% of your components will render()
     // REMEMBER you can only return **one** root element from a render fn.
+
+    getHotels(hotelSearch){
+        console.log('Inside app getHotels',hotelSearch)
+       ajax.searchHotels(hotelSearch).then( data=>{
+            console.log(data)
+            this.setState({
+                Stayhere: data.hotels,
+                Playhere: data.activities
+            })
+            }
+        )
+    }
+
+
+
     render(){
         return(
             <container>
@@ -42,15 +70,23 @@ export default class App extends React.Component{
                     <h1>Explore the wonders of New York.</h1>
                     <h3>plan your next staycation</h3>
                 </section>
-                <SearchForm />
+                <SearchForm
+                getHotels={this.getHotels.bind(this)}
+                />
                 <section className="container">
                     <div className="row">
-                        <PlayHere />
-                    </div>
-                    <div className="row">
-                        <StayHere />
-                    </div>
-                    <div className="row">
+                       <article className="col-md-6">
+                            <PlayHere
+                            play={this.state.Playhere}
+                            />
+                        </article>
+
+                        <article className="col-md-6">
+                            <StayHere
+                             places={this.state.Stayhere}
+                            />
+                        </article>
+
                         <Results />
                     </div>
                 </section>
