@@ -7,9 +7,9 @@ import Nav              from './Nav.jsx'
 import Footer           from './Footer.jsx'
 import PlayHere         from './PlayHere.jsx'
 import StayHere         from './StayHere.jsx'
-import Results          from './Results.jsx'
+import Total            from './Total.jsx'
 import SearchForm       from './SearchForm.jsx'
-import ajax                     from '../helpers/ajaxAdapter.js'
+import ajax             from '../helpers/ajaxAdapter.js'
 
 
 
@@ -38,9 +38,29 @@ export default class App extends React.Component{
                         picture: '',
                         link: ''
                     }],
-          Total: {}
-        }
-    }
+          currentTotal: {
+                        name:'',
+                        budget:250,
+                        Stayhere: {
+                            name: 'Marriot Hotel',
+                            averageRate: '$100',
+                            fullAddress: '60 Madison Ave',
+                            picture: '',
+                            link: 'http://www.freshmedleydesigns.com'
+                        },
+                        Playhere:[{
+                            fromPrice: '50',
+                            imageUrl: '',
+                            title: 'Let us play'
+                        },{
+                            fromPrice: '50',
+                            imageUrl: '',
+                            title: 'Let us play'
+                        }],
+                        total:0
+                        }
+                    }
+                }
     // note that classes do **not** have commas between their methods
 
     // 90% of your components will render()
@@ -87,7 +107,7 @@ export default class App extends React.Component{
                             />
                         </article>
 
-                        <Results />
+                        <Total tripTotal={this.state.currentTotal} />
                     </div>
                 </section>
                 <Footer />
