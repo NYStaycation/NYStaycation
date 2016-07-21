@@ -40,7 +40,7 @@ export default class App extends React.Component{
                     }],
           currentTotal: {
                         name:'',
-                        budget:250,
+                        budget:0,
                         Stayhere: {
                             name: 'Marriot Hotel',
                             averageRate: '$100',
@@ -62,6 +62,18 @@ export default class App extends React.Component{
                     }
                 }
     // note that classes do **not** have commas between their methods
+    // Create our function
+    updateStayInTotal(e){
+        let id = e.target.id
+        console.log('in stayupdate',id);
+        this.state.currentTotal.Stayhere.name = this.state.Stayhere[id].name
+        this.state.currentTotal.Stayhere.averageRate = this.state.Stayhere[id].averageRate
+        this.state.currentTotal.Stayhere.fullAddress = this.state.Stayhere[id].fullAddress
+        this.state.currentTotal.Stayhere.picture = this.state.Stayhere[id].picture
+        this.state.currentTotal.Stayhere.link = this.state.Stayhere[id].link
+        this.setState({currentTotal: this.state.currentTotal})
+
+    }
 
     // 90% of your components will render()
     // REMEMBER you can only return **one** root element from a render fn.
@@ -74,6 +86,11 @@ export default class App extends React.Component{
                 Stayhere: data.hotels,
                 Playhere: data.activities
             })
+
+            //if we want to update one property, use this format
+            this.state.currentTotal.budget = hotelSearch.budget
+            this.setState({currentTotal: this.state.currentTotal})
+
             }
         )
     }
@@ -107,7 +124,10 @@ export default class App extends React.Component{
                             />
                         </article>
 
-                        <Total tripTotal={this.state.currentTotal} />
+                        <Total
+                            tripTotal={this.state.currentTotal}
+                            updateStayTotal={this.updateStayInTotal}
+                        />
                     </div>
                 </section>
                 <Footer />

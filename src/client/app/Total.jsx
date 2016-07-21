@@ -18,12 +18,12 @@ export default class Total extends React.Component{
               <h4 className="card-title">{this.props.tripTotal.Playhere[key].title}</h4>
               <h4 className="card-title">{this.props.tripTotal.Playhere[key].fromPrice}</h4>
             </div>
-
-        </div>
-      ))
-    }
+          </div>
+          ))
+        }
       </div>
-</div>
+        <p>{this.props.tripTotal.budget}</p>
+      </div>
       )
   }
 }
