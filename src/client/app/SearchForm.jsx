@@ -22,7 +22,7 @@ const handleSubmit = event=>{
   dateStr += newDate.getDate() ;
 
 
-  if(checking_date <= dateStr || Checkout_Date < dateStr){
+  if(checking_date < dateStr || Checkout_Date < dateStr){
     alert('Please enter valid date')
   }else if(Checkout_Date < checking_date){
     alert('Please enter valid date')
