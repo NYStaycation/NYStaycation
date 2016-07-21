@@ -16,3 +16,12 @@ body{ padding-top: 70px; }
   font-size: 46px;
   color: white;
 }
+
+.navbar{
+  background-color: #14c5cb;
+}
+
+.navbar-default .navbar-brand{
+  color: white;
+}
+

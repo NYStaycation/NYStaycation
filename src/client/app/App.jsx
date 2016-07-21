@@ -7,9 +7,9 @@ import Nav              from './Nav.jsx'
 import Footer           from './Footer.jsx'
 import PlayHere         from './PlayHere.jsx'
 import StayHere         from './StayHere.jsx'
-import Results          from './Results.jsx'
+import Total            from './Total.jsx'
 import SearchForm       from './SearchForm.jsx'
-import ajax                     from '../helpers/ajaxAdapter.js'
+import ajax             from '../helpers/ajaxAdapter.js'
 
 
 
@@ -38,10 +38,42 @@ export default class App extends React.Component{
                         picture: '',
                         link: ''
                     }],
-          Total: {}
-        }
-    }
+          currentTotal: {
+                        name:'',
+                        budget:0,
+                        Stayhere: {
+                            name: 'Marriot Hotel',
+                            averageRate: '$100',
+                            fullAddress: '60 Madison Ave',
+                            picture: '',
+                            link: 'http://www.freshmedleydesigns.com'
+                        },
+                        Playhere:[{
+                            fromPrice: '50',
+                            imageUrl: '',
+                            title: 'Let us play'
+                        },{
+                            fromPrice: '50',
+                            imageUrl: '',
+                            title: 'Let us play'
+                        }],
+                        total:0
+                        }
+                    }
+                }
     // note that classes do **not** have commas between their methods
+    // Create our function
+    updateStayInTotal(e){
+        let id = e.target.id
+        console.log('in stayupdate',id);
+        this.state.currentTotal.Stayhere.name = this.state.Stayhere[id].name
+        this.state.currentTotal.Stayhere.averageRate = this.state.Stayhere[id].averageRate
+        this.state.currentTotal.Stayhere.fullAddress = this.state.Stayhere[id].fullAddress
+        this.state.currentTotal.Stayhere.picture = this.state.Stayhere[id].picture
+        this.state.currentTotal.Stayhere.link = this.state.Stayhere[id].link
+        this.setState({currentTotal: this.state.currentTotal})
+
+    }
 
     // 90% of your components will render()
     // REMEMBER you can only return **one** root element from a render fn.
@@ -54,6 +86,11 @@ export default class App extends React.Component{
                 Stayhere: data.hotels,
                 Playhere: data.activities
             })
+
+            //if we want to update one property, use this format
+            this.state.currentTotal.budget = hotelSearch.budget
+            this.setState({currentTotal: this.state.currentTotal})
+
             }
         )
     }
@@ -87,7 +124,10 @@ export default class App extends React.Component{
                             />
                         </article>
 
-                        <Results />
+                        <Total
+                            tripTotal={this.state.currentTotal}
+                            updateStayTotal={this.updateStayInTotal}
+                        />
                     </div>
                 </section>
                 <Footer />
