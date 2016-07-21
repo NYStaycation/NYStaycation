@@ -13,11 +13,18 @@ const handleSubmit = event=>{
   let dateStr = ''
   let newDate = new Date()
   dateStr += (newDate.getFullYear()) + "-";
-  dateStr += (newDate.getMonth() + 1)+ "-" ;
+  // dateStr += '0'+(newDate.getMonth() + 1)+ "-" ;
+  if(newDate.getMonth.length < 2){
+    dateStr += '0'+(newDate.getMonth() + 1)+ "-" ;
+  }else{
+    dateStr += (newDate.getMonth() + 1)+ "-" ;
+  }
   dateStr += newDate.getDate() ;
 
 
-  if((checking_date < dateStr || Checkout_Date < dateStr) && (Checkout_Date < checking_date)){
+  if(checking_date < dateStr || Checkout_Date < dateStr){
+    alert('Please enter valid date')
+  }else if(Checkout_Date < checking_date){
     alert('Please enter valid date')
   }else {
     userSearch = {
