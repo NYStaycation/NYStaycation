@@ -2,12 +2,22 @@
 
 DROP TABLE IF EXISTS customers;
 CREATE TABLE customers (
-user_id SERIAL PRIMARY KEY NOT NULL,
+user_id SERIAL NOT NULL,
 user_fname VARCHAR(50) NOT NULL,
 user_lname VARCHAR(50) NOT NULL,
-user_email VARCHAR  NOT NULL,
+user_email VARCHAR UNIQUE PRIMARY KEY NOT NULL,
 user_pass_digest VARCHAR NOT NULL
 );
+
+DROP TABLE IF EXISTS visit;
+CREATE TABLE visit (
+visit_id SERIAL PRIMARY KEY NOT NULL,
+visit_name VARCHAR NOT NULL,
+visit_budget DECIMAL(7,2) NOT NULL,
+visit_created_date timestamp not null default now(),
+visit_email VARCHAR references customers(user_email)
+);
+
 
 DROP TABLE IF EXISTS stayhere;
 CREATE TABLE stayhere (
@@ -18,7 +28,10 @@ stay_link VARCHAR NOT NULL,
 stay_address VARCHAR NOT NULL,
 stay_img VARCHAR NOT NULL,
 stay_email VARCHAR NOT NULL,
-stay_user_id INT references customers(user_id)
+stay_created_date timestamp not null default now(),
+stay_checkin_date date NOT NULL,
+stay_checkout_date date NOT NULL,
+stay_v_id INT references visit(visit_id)
 );
 
 DROP TABLE IF EXISTS playhere;
@@ -28,17 +41,9 @@ play_title VARCHAR NOT NULL,
 play_price DECIMAL(7,2) NOT NULL,
 play_img VARCHAR NOT NULL,
 play_email VARCHAR NOT NULL,
-play_user_id INT references customers(user_id)
+play_checkin_date date NOT NULL,
+play_checkout_date date NOT NULL,
+play_v_id INT references visit(visit_id)
 );
 
-DROP TABLE IF EXISTS visit;
-CREATE TABLE visit (
-visit_id SERIAL PRIMARY KEY NOT NULL,
-visit_play_id INT references playhere(play_id),
-visit_stay_id INT references stayhere(stay_id),
-visit_user_id INT references customers(user_id),
-visit_user_email VARCHAR NOT NULL,
-visit_startdate DATE,
-visit_enddate DATE,
-visit_budget DECIMAL(7,2) NOT NULL
-);
+
