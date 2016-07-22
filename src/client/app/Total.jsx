@@ -1,5 +1,11 @@
 import React    from 'react'
 
+/**************************************************
+budget: this.props.tripTotal.budget
+total: this.props.tripTotal.total
+
+**************************************************/
+
 export default class Total extends React.Component{
   render(){
     return(
@@ -8,7 +14,7 @@ export default class Total extends React.Component{
         <p>{this.props.tripTotal.Stayhere.name}</p>
         <p>{this.props.tripTotal.Stayhere.fullAddress}</p>
         <p><a href={this.props.tripTotal.Stayhere.link} target="_blank">{this.props.tripTotal.Stayhere.name}</a></p>
-        <p>Trip Cost: ${this.props.tripTotal.budget}</p>
+        <p>Trip Cost: ${this.props.tripTotal.total}</p>
       </div>
       <div className="list-group">
         {Object.keys(this.props.tripTotal.Playhere)
