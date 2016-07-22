@@ -48,21 +48,34 @@ export default class App extends React.Component{
                             picture: '',
                             link: 'http://www.freshmedleydesigns.com'
                         },
-                        Playhere:[{
-                            fromPrice: '50',
-                            imageUrl: '',
-                            title: 'Let us play'
-                        },{
-                            fromPrice: '50',
-                            imageUrl: '',
-                            title: 'Let us play'
-                        }],
+                        Playhere:[],
                         total:0
                         }
                     }
                 }
     // note that classes do **not** have commas between their methods
     // Create our function
+    //refresh the total
+    updateTotal(){
+        let stayhere = parseInt(this.state.currentTotal.Stayhere.averageRate)
+
+        //calculate the total for the places to play
+        let playhere = 0
+        this.state.currentTotal.Playhere.forEach(item=>{
+            let number = item.fromPrice.split('')
+            number.shift()
+            number.join('')
+            playhere+= parseInt(number)
+        })
+
+        //sum them
+        this.state.currentTotal.total = stayhere + playhere
+
+        //update the state
+        this.setState({currentTotal: this.state.currentTotal})
+    }
+
+    //save a place to sleep
     updateStayHereInTotal(id){
         // clone the properties of the source component
         this.state.currentTotal.Stayhere.name        = this.state.Stayhere[id].name
@@ -74,12 +87,27 @@ export default class App extends React.Component{
         //then set the state
         this.setState({currentTotal: this.state.currentTotal})
 
+        //update the total
+        this.updateTotal()
     }
 
     //push play here to the state
     updatePlayhereInTotal(id){
-        console.log(id)
+        // console.log(this.state)
+        // make an object to store the info we need
+        this.state.currentTotal.Playhere.push({
+            title: this.state.Playhere[id].title,
+            imageURL: this.state.Playhere[id].imageURL,
+            fromPrice: this.state.Playhere[id].fromPrice
+        })
+
+        // then set the state
+        this.setState({currentTotal: this.state.currentTotal})
+
+        //update the total
+        this.updateTotal()
     }
+
     // 90% of your components will render()
     // REMEMBER you can only return **one** root element from a render fn.
 
