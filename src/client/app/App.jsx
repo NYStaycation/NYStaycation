@@ -63,14 +63,15 @@ export default class App extends React.Component{
                 }
     // note that classes do **not** have commas between their methods
     // Create our function
-    updateStayInTotal(e){
-        let id = e.target.id
-        console.log('in stayupdate',id);
-        this.state.currentTotal.Stayhere.name = this.state.Stayhere[id].name
+    updateStayHereInTotal(id){
+        // clone the properties of the source component
+        this.state.currentTotal.Stayhere.name        = this.state.Stayhere[id].name
         this.state.currentTotal.Stayhere.averageRate = this.state.Stayhere[id].averageRate
         this.state.currentTotal.Stayhere.fullAddress = this.state.Stayhere[id].fullAddress
-        this.state.currentTotal.Stayhere.picture = this.state.Stayhere[id].picture
-        this.state.currentTotal.Stayhere.link = this.state.Stayhere[id].link
+        this.state.currentTotal.Stayhere.picture     = this.state.Stayhere[id].picture
+        this.state.currentTotal.Stayhere.link        = this.state.Stayhere[id].link
+
+        //then set the state
         this.setState({currentTotal: this.state.currentTotal})
 
     }
@@ -121,12 +122,12 @@ export default class App extends React.Component{
                         <article className="col-md-6">
                             <StayHere
                              places={this.state.Stayhere}
+                             updateStayHereInTotal={this.updateStayHereInTotal.bind(this)}
                             />
                         </article>
 
                         <Total
                             tripTotal={this.state.currentTotal}
-                            updateStayTotal={this.updateStayInTotal}
                         />
                     </div>
                 </section>
