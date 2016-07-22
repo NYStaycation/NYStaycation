@@ -76,6 +76,10 @@ export default class App extends React.Component{
 
     }
 
+    //push play here to the state
+    updatePlayhereInTotal(id){
+        console.log(id)
+    }
     // 90% of your components will render()
     // REMEMBER you can only return **one** root element from a render fn.
 
@@ -116,6 +120,7 @@ export default class App extends React.Component{
                        <article className="col-md-6">
                             <PlayHere
                             play={this.state.Playhere}
+                            updatePlayhereInTotal={this.updatePlayhereInTotal.bind(this)}
                             />
                         </article>
 
