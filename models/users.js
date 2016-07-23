@@ -14,31 +14,58 @@ const config = {
 const _db = pg(config);
 
 module.exports = {
+  getVisits(req,res,next){
+    _db.any(`SELECT * from visit WHERE visit_email = $1`, [req.query.email]).then(visit=>{
+      res.visits = visit
+      next()
+    })
+    .catch( error=>{
+
+        console.error('Error in getVisits ', error);
+        throw error;
+      })
+  },
 
   getHotels(req, res, next) {
-    _db.any("SELECT * from stayhere WHERE stay_email = $1;",[req.body.stay_email])
-      .then( stay=>{
-        res.rows = stay;
-        next()
+    let counter = 0
+    res.visits.forEach((visit, index)=>{
+      _db.one(`SELECT * from stayhere WHERE stay_email = $1 AND stay_visit = $2`, [req.query.email, visit.visit_name])
+        .then( stay=>{
+          res.visits[index].stayhere = stay;
+          counter++
+
+          //if at the end of the array call next
+          if(counter == res.visits.length ){
+            next()
+          }
       })
       .catch( error=>{
 
         console.error('Error in getHotels ', error);
         throw error;
       })
+    })
   },
 
     getPlay(req, res, next) {
-    _db.any("SELECT * from playhere WHERE stay_email = $1;",[req.body.stay_email])
-      .then( play=>{
-        res.rows = play;
-        next()
+      let counter = 0
+      res.visits.forEach((visit, index)=>{
+        _db.any(`SELECT * from playhere WHERE play_email = $1 AND play_visit = $2`, [req.query.email, visit.visit_name])
+        .then( play=>{
+          res.visits[index].playhere = play;
+
+          counter++
+
+         //if at the end of the array call next
+          if(counter == res.visits.length ){
+            next()
+        }
       })
       .catch( error=>{
-
         console.error('Error in getPlay ', error);
         throw error;
       })
+    })
   },
 
 
