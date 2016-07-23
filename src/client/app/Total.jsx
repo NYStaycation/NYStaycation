@@ -11,6 +11,7 @@ export default class Total extends React.Component{
     return(
      <div>
      <h3>Place to Stay</h3>
+     <input type="text" placeholder="Visit Name"/>
       <div className="card">
         <img className="card-img-top img-thumbnail" src={this.props.tripTotal.Stayhere.picture}/>
         <div className="card-block">
@@ -37,6 +38,7 @@ export default class Total extends React.Component{
       </div>
         <p>Trip Cost: ${this.props.tripTotal.total}</p>
         <p>Budget: ${this.props.tripTotal.budget}</p>
+        <button className="btn btn-default">Save Plan</button>
       </div>
       )
   }
