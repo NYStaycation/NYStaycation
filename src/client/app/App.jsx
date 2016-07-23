@@ -138,6 +138,16 @@ export default class App extends React.Component{
         )
     }
 
+    logName(event){
+        let name = event.target.value
+        this.state.currentTotal.name = name
+
+        this.setState({
+            name: this.state.currentTotal.name
+        })
+        console.log('Name inside object', this.state.currentTotal)
+    }
+
 
 
     render(){
@@ -172,6 +182,7 @@ export default class App extends React.Component{
                         <article className="col-md-4">
                         <Total
                             tripTotal={this.state.currentTotal}
+                            logName={this.logName.bind(this)}
                         />
                         </article>
                     </div>
