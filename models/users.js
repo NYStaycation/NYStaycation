@@ -103,7 +103,7 @@ module.exports = {
     req.body.Playhere.forEach((activity, index)=>{
       _db.none(
         `INSERT INTO playhere (play_title, play_price, play_img, play_email, play_visit) VALUES ($1, $2, $3, $4, $5);`,
-        [activity.title, activity.fromPrice, activity.imageUrl, req.body.email, req.body.name]
+        [activity.title, activity.fromPrice, activity.imageURL, req.body.email, req.body.name]
 
       )
     .then( play =>{

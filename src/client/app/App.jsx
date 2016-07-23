@@ -65,10 +65,8 @@ export default class App extends React.Component{
         //calculate the total for the places to play
         let playhere = 0
         this.state.currentTotal.Playhere.forEach(item=>{
-            let number = item.fromPrice.split('')
-            number.shift()
-            number = number.join('')
-            playhere+= parseInt(number)
+            let number = item.fromPrice
+            playhere+= number
         })
         //console logging playhere to check image url
         console.log('Inside app, updateTotal',this.state.currentTotal.Playhere)
@@ -107,10 +105,16 @@ export default class App extends React.Component{
         // make an object to store the info we need
         console.log('First',this.state.Playhere[id].imageUrl)
         console.log('First',this.state.Playhere[id].imageURL)
+
+        let cleanNumber = this.state.Playhere[id].fromPrice.split('')
+        cleanNumber.shift()
+        cleanNumber = cleanNumber.join('')
+
+
         this.state.currentTotal.Playhere.push({
             title: this.state.Playhere[id].title,
             imageURL: this.state.Playhere[id].imageUrl,
-            fromPrice: this.state.Playhere[id].fromPrice
+            fromPrice: parseInt(cleanNumber)
         })
 
         // then set the state
@@ -153,9 +157,10 @@ export default class App extends React.Component{
    insertTrip(){
     let newTrip = this.state.currentTotal
     console.log('logged on Click',newTrip)
-    // ajax.createTrips(newTrip).then(data=>{
-    //     console.log('')
-    // })
+
+    ajax.createTrips(newTrip).then(data=>{
+        console.log(data)
+    })
    }
 
     render(){
