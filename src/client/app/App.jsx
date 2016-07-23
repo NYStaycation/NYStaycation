@@ -42,14 +42,15 @@ export default class App extends React.Component{
                         name:'',
                         budget:0,
                         Stayhere: {
-                            name: 'Marriot Hotel',
-                            averageRate: '$100',
-                            fullAddress: '60 Madison Ave',
+                            name: '',
+                            averageRate: 0,
+                            fullAddress: '',
                             picture: '',
-                            link: 'http://www.freshmedleydesigns.com'
+                            link: ''
                         },
                         Playhere:[],
-                        total:0
+                        total:0,
+                        budgetWatch:''
                         }
                     }
                 }
@@ -64,7 +65,7 @@ export default class App extends React.Component{
         this.state.currentTotal.Playhere.forEach(item=>{
             let number = item.fromPrice.split('')
             number.shift()
-            number.join('')
+            number = number.join('')
             playhere+= parseInt(number)
         })
         //console logging playhere to check image url
@@ -72,6 +73,11 @@ export default class App extends React.Component{
 
         //sum them
         this.state.currentTotal.total = stayhere + playhere
+
+        //check if over budget
+        if(this.state.currentTotal.budget < this.state.currentTotal.total){
+            this.state.currentTotal.budgetWatch = "WARNING OVER BUDGET"
+        }
 
         //update the state
         this.setState({currentTotal: this.state.currentTotal})
