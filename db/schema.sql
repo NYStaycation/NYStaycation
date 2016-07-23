@@ -31,7 +31,8 @@ stay_email VARCHAR NOT NULL,
 stay_created_date timestamp not null default now(),
 stay_checkin_date date NOT NULL,
 stay_checkout_date date NOT NULL,
-stay_v_id INT references visit(visit_id)
+stay_v_id INT references visit(visit_id),
+stay_visit VARCHAR NOT NULL
 );
 
 DROP TABLE IF EXISTS playhere;
@@ -43,7 +44,8 @@ play_img VARCHAR NOT NULL,
 play_email VARCHAR NOT NULL,
 play_checkin_date date NOT NULL,
 play_checkout_date date NOT NULL,
-play_v_id INT references visit(visit_id)
+play_v_id INT references visit(visit_id),
+play_visit VARCHAR NOT NULL
 );
 
 

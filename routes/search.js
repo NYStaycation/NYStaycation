@@ -12,16 +12,6 @@ router.get('/', getHotels, getActivities, (req,res)=>{
  res.json(res.results)
 })
 
-router.route('/trip/all')
-  .get((req,res)=>res.send('get all our trip'))
-
-router.route('/trip/new')
-  .post((req,res)=>res.send('insert new trip'))
-
-
-router.route('/trip/:id')
-  // .put((req,res)=>res.send(req.params.id))
-  .delete( (req,res)=>res.send(req.params.id))
 
 
 
