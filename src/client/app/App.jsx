@@ -50,7 +50,9 @@ export default class App extends React.Component{
                         },
                         Playhere:[],
                         total:0,
-                        budgetWatch:''
+                        budgetWatch:'',
+                        email:'dmaul12@gmail.com'
+
                         }
                     }
                 }
@@ -148,7 +150,13 @@ export default class App extends React.Component{
         console.log('Name inside object', this.state.currentTotal)
     }
 
-
+   insertTrip(){
+    let newTrip = this.state.currentTotal
+    console.log('logged on Click',newTrip)
+    // ajax.createTrips(newTrip).then(data=>{
+    //     console.log('')
+    // })
+   }
 
     render(){
         return(
@@ -183,6 +191,7 @@ export default class App extends React.Component{
                         <Total
                             tripTotal={this.state.currentTotal}
                             logName={this.logName.bind(this)}
+                            insertTrip={this.insertTrip.bind(this)}
                         />
                         </article>
                     </div>

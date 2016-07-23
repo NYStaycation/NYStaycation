@@ -40,7 +40,7 @@ export default class Total extends React.Component{
         <p>Trip Cost: ${this.props.tripTotal.total}</p>
         <p>Budget: ${this.props.tripTotal.budget}</p>
         <p className="warning"><strong> {this.props.tripTotal.budgetWatch} </strong> </p>
-        <button className="btn btn-default">Save Plan</button>
+        <button onClick={this.props.insertTrip} className="btn btn-default">Save Plan</button>
       </div>
       )
   }
