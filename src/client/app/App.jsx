@@ -67,6 +67,8 @@ export default class App extends React.Component{
             number.join('')
             playhere+= parseInt(number)
         })
+        //console logging playhere to check image url
+        console.log('Inside app, updateTotal',this.state.currentTotal.Playhere)
 
         //sum them
         this.state.currentTotal.total = stayhere + playhere
@@ -95,9 +97,11 @@ export default class App extends React.Component{
     updatePlayhereInTotal(id){
         // console.log(this.state)
         // make an object to store the info we need
+        console.log('First',this.state.Playhere[id].imageUrl)
+        console.log('First',this.state.Playhere[id].imageURL)
         this.state.currentTotal.Playhere.push({
             title: this.state.Playhere[id].title,
-            imageURL: this.state.Playhere[id].imageURL,
+            imageURL: this.state.Playhere[id].imageUrl,
             fromPrice: this.state.Playhere[id].fromPrice
         })
 
@@ -145,23 +149,25 @@ export default class App extends React.Component{
                 />
                 <section className="container">
                     <div className="row">
-                       <article className="col-md-6">
+                       <article className="col-md-4">
                             <PlayHere
                             play={this.state.Playhere}
                             updatePlayhereInTotal={this.updatePlayhereInTotal.bind(this)}
                             />
                         </article>
 
-                        <article className="col-md-6">
+                        <article className="col-md-4">
                             <StayHere
                              places={this.state.Stayhere}
                              updateStayHereInTotal={this.updateStayHereInTotal.bind(this)}
                             />
                         </article>
 
+                        <article className="col-md-4">
                         <Total
                             tripTotal={this.state.currentTotal}
                         />
+                        </article>
                     </div>
                 </section>
                 <Footer />
