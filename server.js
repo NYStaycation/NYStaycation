@@ -16,10 +16,10 @@ const tripRoute       = require('./routes/trip')
 
 
 
+app.use(bodyParser.json())
 app.use(logger('dev'));
 // app.use(logger(DEV ? 'dev' : 'common'))
 app.use(express.static(path.join(__dirname,'dist')))
-app.use(bodyParser.json())
 
 
 

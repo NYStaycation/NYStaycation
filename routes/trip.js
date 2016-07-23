@@ -1,7 +1,7 @@
 'use strict'
 //require express router
 const router = require('express').Router()
-const {getVisits, getHotels, getPlay} = require('../models/users')
+const {getVisits, getHotels, getPlay, addVisit, addHotel, addPlay} = require('../models/users')
 
 
 // / route
@@ -9,7 +9,7 @@ router.route('/all')
   .get(getVisits, getHotels, getPlay, (req,res)=>res.json(res.visits))
 
 router.route('/new')
-  .post((req,res)=>res.send('insert new trip'))
+  .post(addVisit, addHotel, addPlay, (req,res)=>res.send('INSERTED!'))
 
 
 router.route('/:id')

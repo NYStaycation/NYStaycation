@@ -68,17 +68,28 @@ module.exports = {
     })
   },
 
+  addVisit(req,res,next){
+    console.log(req.body.name)
+    _db.none(`INSERT INTO visit (visit_name, visit_budget, visit_email) VALUES($1, $2, $3);`, [req.body.name, req.body.budget, req.body.email])
+    .then(()=>{
+      next()
+    })
+    .catch(error=>{
+      console.error('Error in adding visit', error);
+      throw error;
+    })
+  },
 
-  addHotels(req, res, next){
+
+  addHotel(req, res, next){
     console.log('added hotels', req.body)
-    _db.one(
-        `INSERT INTO stayhere (stay_title, stay_price, stay_link, stay_address, stay_img, stay_email, stay_checkin_date, stay_checkout_date) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) returning *;`,
-        [req.body.stay_title, req.body.stay_price, req.body.stay_link, req.body.stay_address, req.body.stay_img, req.body.stay_email, req.body.stay_checkin_date, req.body.stay_checkout_date]
+    _db.none(
+        `INSERT INTO stayhere (stay_title, stay_price, stay_link, stay_address, stay_img, stay_email, stay_visit) VALUES ($1, $2, $3, $4, $5, $6, $7);`,
+        [req.body.Stayhere.name, req.body.Stayhere.averageRate, req.body.Stayhere.link, req.body.Stayhere.fullAddress, req.body.Stayhere.picture, req.body.email, req.body.name]
 
       )
     .then( stay =>{
       console.log('added hotel');
-      res.rows = stay;
       next();
     })
     .catch(error=>{
@@ -88,20 +99,24 @@ module.exports = {
   },
 
   addPlay(req, res, next){
-    console.log('added Play', req.body)
-    _db.one(
-        `INSERT INTO playhere (play_title, play_price, play_img, play_email, play_checkin_date, play_checkout_date) VALUES ($1, $2, $3, $4, $5, $6) returning *;`,
-        [req.body.play_title, req.body.play_price, req.body.play_img, req.body.play_email, req.body.play_checkin_date, req.body.play_checkout_date]
+    let counter = 0
+    req.body.Playhere.forEach((activity, index)=>{
+      _db.none(
+        `INSERT INTO playhere (play_title, play_price, play_img, play_email, play_visit) VALUES ($1, $2, $3, $4, $5);`,
+        [activity.title, activity.fromPrice, activity.imageUrl, req.body.email, req.body.name]
 
       )
     .then( play =>{
       console.log('added activies');
-      res.rows = stay;
-      next();
+      counter++
+      if (counter == req.body.Playhere.length){
+        next();
+      }
     })
     .catch(error=>{
       console.error('Error in adding activies', error);
       throw error;
+    })
     })
   },
 

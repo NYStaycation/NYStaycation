@@ -15,7 +15,7 @@ visit_id SERIAL PRIMARY KEY NOT NULL,
 visit_name VARCHAR NOT NULL,
 visit_budget DECIMAL(7,2) NOT NULL,
 visit_created_date timestamp not null default now(),
-visit_email VARCHAR references customers(user_email)
+visit_email VARCHAR NOT NULL
 );
 
 
@@ -29,8 +29,8 @@ stay_address VARCHAR NOT NULL,
 stay_img VARCHAR NOT NULL,
 stay_email VARCHAR NOT NULL,
 stay_created_date timestamp not null default now(),
-stay_checkin_date date NOT NULL,
-stay_checkout_date date NOT NULL,
+stay_checkin_date date,
+stay_checkout_date date,
 stay_v_id INT references visit(visit_id),
 stay_visit VARCHAR NOT NULL
 );
@@ -42,8 +42,8 @@ play_title VARCHAR NOT NULL,
 play_price DECIMAL(7,2) NOT NULL,
 play_img VARCHAR NOT NULL,
 play_email VARCHAR NOT NULL,
-play_checkin_date date NOT NULL,
-play_checkout_date date NOT NULL,
+play_checkin_date date,
+play_checkout_date date,
 play_v_id INT references visit(visit_id),
 play_visit VARCHAR NOT NULL
 );
