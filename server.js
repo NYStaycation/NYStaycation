@@ -22,6 +22,8 @@ app.use(logger('dev'));
 app.use(express.static(path.join(__dirname,'dist')))
 
 
+app.use( '/api', require('./routes/api')   );
+app.use( '/api/users', require('./routes/users') );
 
 app.use('/search', SearchRoute);
 app.use('/trip', tripRoute);
