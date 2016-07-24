@@ -47,11 +47,10 @@ const handleSubmit = event=>{
 
 
   return(
-      <section className="jumbotron">
-        <h1>Search Staycation</h1>
+      <section className="searchform jumbotron">
+        <h2>Search Staycation</h2>
         <form className="form-inline" onSubmit={handleSubmit}>
           <div className="form-group">
-
             <input type="text" className="form-control input-lg" name="city" placeholder="City or Zip" required/>
 
             <input type="text" className="form-control input-lg" name="budget" placeholder="What's your budget?" required/>

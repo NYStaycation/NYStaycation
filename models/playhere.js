@@ -40,7 +40,8 @@ module.exports = {
           })
 
           //save it to the res
-          res.results.activities = results
+          res.results.activities = results.splice(1,20)
+
           next()
 
         }catch(e){

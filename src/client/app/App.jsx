@@ -42,14 +42,17 @@ export default class App extends React.Component{
                         name:'',
                         budget:0,
                         Stayhere: {
-                            name: 'Marriot Hotel',
-                            averageRate: '$100',
-                            fullAddress: '60 Madison Ave',
+                            name: '',
+                            averageRate: 0,
+                            fullAddress: '',
                             picture: '',
-                            link: 'http://www.freshmedleydesigns.com'
+                            link: ''
                         },
                         Playhere:[],
-                        total:0
+                        total:0,
+                        budgetWatch:'',
+                        email:'dmaul12@gmail.com'
+
                         }
                     }
                 }
@@ -62,14 +65,19 @@ export default class App extends React.Component{
         //calculate the total for the places to play
         let playhere = 0
         this.state.currentTotal.Playhere.forEach(item=>{
-            let number = item.fromPrice.split('')
-            number.shift()
-            number.join('')
-            playhere+= parseInt(number)
+            let number = item.fromPrice
+            playhere+= number
         })
+        //console logging playhere to check image url
+        console.log('Inside app, updateTotal',this.state.currentTotal.Playhere)
 
         //sum them
         this.state.currentTotal.total = stayhere + playhere
+
+        //check if over budget
+        if(this.state.currentTotal.budget < this.state.currentTotal.total){
+            this.state.currentTotal.budgetWatch = "WARNING OVER BUDGET"
+        }
 
         //update the state
         this.setState({currentTotal: this.state.currentTotal})
@@ -95,10 +103,18 @@ export default class App extends React.Component{
     updatePlayhereInTotal(id){
         // console.log(this.state)
         // make an object to store the info we need
+        console.log('First',this.state.Playhere[id].imageUrl)
+        console.log('First',this.state.Playhere[id].imageURL)
+
+        let cleanNumber = this.state.Playhere[id].fromPrice.split('')
+        cleanNumber.shift()
+        cleanNumber = cleanNumber.join('')
+
+
         this.state.currentTotal.Playhere.push({
             title: this.state.Playhere[id].title,
-            imageURL: this.state.Playhere[id].imageURL,
-            fromPrice: this.state.Playhere[id].fromPrice
+            imageURL: this.state.Playhere[id].imageUrl,
+            fromPrice: parseInt(cleanNumber)
         })
 
         // then set the state
@@ -128,44 +144,65 @@ export default class App extends React.Component{
         )
     }
 
+    logName(event){
+        let name = event.target.value
+        this.state.currentTotal.name = name
 
+        this.setState({
+            name: this.state.currentTotal.name
+        })
+        console.log('Name inside object', this.state.currentTotal)
+    }
+
+   insertTrip(){
+    let newTrip = this.state.currentTotal
+    console.log('logged on Click',newTrip)
+
+    ajax.createTrips(newTrip).then(data=>{
+        console.log(data)
+    })
+   }
 
     render(){
         return(
-            <container>
-                <header>
+            <div>
+                <header className="navbar-header">
                     <Nav />
                 </header>
                 <section id="intro-area">
-                    <h1>Explore the wonders of New York.</h1>
-                    <h3>plan your next staycation</h3>
+                    <h1>Staycate and enjoy the adventures locally.</h1>
                 </section>
-                <SearchForm
-                getHotels={this.getHotels.bind(this)}
-                />
+                <section className="container">
+                    <SearchForm
+                     getHotels={this.getHotels.bind(this)} />
+                </section>
                 <section className="container">
                     <div className="row">
-                       <article className="col-md-6">
-                            <PlayHere
-                            play={this.state.Playhere}
-                            updatePlayhereInTotal={this.updatePlayhereInTotal.bind(this)}
-                            />
-                        </article>
-
-                        <article className="col-md-6">
+                       <article className="col-md-4">
                             <StayHere
                              places={this.state.Stayhere}
                              updateStayHereInTotal={this.updateStayHereInTotal.bind(this)}
                             />
                         </article>
 
+                        <article className="col-md-4">
+                            <PlayHere
+                            play={this.state.Playhere}
+                            updatePlayhereInTotal={this.updatePlayhereInTotal.bind(this)}
+                            />
+                        </article>
+
+                        <article className="col-md-4">
                         <Total
                             tripTotal={this.state.currentTotal}
+                            logName={this.logName.bind(this)}
+                            insertTrip={this.insertTrip.bind(this)}
                         />
+                        </article>
                     </div>
                 </section>
                 <Footer />
-            </container>
+            </div>
         )
     }
 }

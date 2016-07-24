@@ -8,8 +8,34 @@ const ajaxAdapter = {
 
     return fetch($url)
     .then(r=> r.json())
+},
 
-  }
+ getTrips(){
+    return fetch('/trip/all')
+      .then( r=> r.json() )
+  },
+
+  createTrips(newTrip){
+    return fetch('/trip/new',{
+      method:'post',
+      headers:{
+        "Content-type": "application/json; charset=UTF-8"
+      },
+      body: JSON.stringify(newTrip)
+    })
+    .then( r=> r.json() )
+  },
+
+   deleteTrips(id){
+    return fetch(`/trip/${id}`,{
+      method:'DELETE',
+      headers:{
+        "Content-type": "application/json; charset=UTF-8"
+      }
+    }).then( r=> r.json() )
+  },
+
+
 
 
 }

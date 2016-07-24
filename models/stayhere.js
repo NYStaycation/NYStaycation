@@ -49,17 +49,20 @@ module.exports = {
                   //parse the data that comes back
                   let hotel = JSON.parse(data)
 
-                  //build the object for each item
-                  let item = {
-                    name: place.name,
-                    averageRate: hotel.hotelRoomResponse[0].rateInfo.chargeableRateInfo.averageRate ,
-                    fullAddress: hotel.hotelAddress + ', ' +hotel.hotelCity,
-                    picture: 'http://media.expedia.com' + hotel.photos[0].url,
-                    link: hotel.deepLinkUrl
-                  }
+                 if(hotel.hotelRoomResponse[0].rateInfo.chargeableRateInfo.averageRate < budget/2){
+                     //build the object for each item
+                    let item = {
+                      name: place.name,
+                      averageRate: hotel.hotelRoomResponse[0].rateInfo.chargeableRateInfo.averageRate ,
+                      fullAddress: hotel.hotelAddress + ', ' +hotel.hotelCity,
+                      picture: 'http://media.expedia.com' + hotel.photos[0].url,
+                      link: hotel.deepLinkUrl
+                    }
 
-                  //push that item to results
-                  apiResults.push(item)
+                    //push that item to results
+                    apiResults.push(item)
+                 }
+
                   console.log('hotel',counter, 'out of',hotels.length)
                   // if at the end of the array, call next to go to the next middleware | THIS DEFINITLY RUNS
                   if(counter === hotels.length-1) {

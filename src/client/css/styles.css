@@ -1,27 +1,140 @@
-body{ padding-top: 70px; }
+/*FONTS VIA GOOGLE*/
+@import 'https://fonts.googleapis.com/css?family=Oswald:400,700|Playfair+Display:400,400i,700,700i,900,900i|Raleway:400,700';
 
+/*
+COLORS TO USE:
+Dark Purple: #431c5d;
+Teal: #14c5cb;
+Orange: #e05915;
+Lime: #cdd422;
+Grey: #e6e9f0;
+Shade of Light Purple: #bccbde;
+Shade of Light Blue: #c2dde6;
+*/
+
+body{
+  padding-top: 70px;
+  font-family: 'Raleway', sans-serif;
+ }
+
+/*NavBar and Intro Area*/
 #intro-area{
   background: linear-gradient(
       rgba(99, 29, 150, 0.65),
-      rgba(41, 50, 60, 0.65)), url('http://fjordtours.blob.core.windows.net/fjordtours-umbraco/1199/gerirangerfjord-per-ottar-walderhaug-fjordnorway.jpg') no-repeat center center fixed;
+      rgba(41, 50, 60, 0.65)), url('https://images5.alphacoders.com/439/439361.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  height: 400px;
+  height: 450px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:450px;
+  margin-top: -20px;
   text-align: center;
+  color: white;
 }
 
 #intro-area h1{
-  font-size: 46px;
-  color: white;
+  font-family: 'Oswald', sans-serif;
+  font-size: 56px;
+  text-align:center;
 }
 
 .navbar{
-  background-color: #14c5cb;
+  background-color: #431c5d;
+  border-color: #cdd422;
 }
 
 .navbar-default .navbar-brand{
+  color: #cdd422;
+  font-size: 24px;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+}
+
+.navbar-nav.navbar-right{
+  margin: 15px 5px;
   color: white;
 }
 
+/*SearchForm Styles*/
+
+.searchform.jumbotron{
+  background-color: #cdd422;
+  margin-top: 15px;
+  padding-top: 05px;
+  border-radius: 1px;
+}
+
+.searchform.jumbotron h2{
+  text-align: center;
+  font-size: 24px;
+  color: #431c5d;
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-style: italic;
+  padding-bottom: 10px;
+}
+
+button.btn.btn-primary.btn-lg{
+  background-color: #e05915;
+  color: #fff;
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 1px;
+}
+
+input.form-control.input-lg{
+  border-radius: 1px;
+}
+
+.warning{
+  color:red;
+}
+
+/*StayHere PlayHere Save Trip Styling*/
+
+button.btn.btn-default{
+  background-color: #e05915;
+  color: #fff;
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 1px;
+}
+
+.list-group h2, .savetrips h2{
+  font-family: 'Oswald', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.card h4.card-title{
+  font-weight: bold;
+}
+
+.savetrips h3{
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-style: italic;
+  font-size: 18px;
+}
+
+/*Footer Styling*/
+footer{
+  background-color: #431c5d;
+  margin-top: 30px;
+  color: white;
+  padding-top: 15px;
+}
+
+footer a{
+  color: #cdd422;
+}
+
+span.glyphicon.glyphicon-heart{
+  color: #cdd422;
+}
