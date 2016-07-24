@@ -123,6 +123,10 @@ button.btn.btn-default{
   font-size: 18px;
 }
 
+.bolden {
+  font-weight: 700;
+}
+
 /*Footer Styling*/
 footer{
   background-color: #431c5d;
