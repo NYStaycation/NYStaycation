@@ -20,8 +20,8 @@ body{
 /*NavBar and Intro Area*/
 #intro-area{
   background: linear-gradient(
-      rgba(99, 29, 150, 0.65),
-      rgba(41, 50, 60, 0.65)), url('https://images5.alphacoders.com/439/439361.jpg') no-repeat center center fixed;
+      rgba(255, 128, 8, 0.65),
+      rgba(67, 28, 93, 0.65)), url('https://images5.alphacoders.com/439/439361.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
