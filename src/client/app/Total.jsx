@@ -28,7 +28,7 @@ export default class Total extends React.Component{
           ))
         }
       </div>
-        <p>{this.props.tripTotal.budget}</p>
+        <h4>My Budget: ${this.props.tripTotal.budget}</h4>
       </div>
       )
   }

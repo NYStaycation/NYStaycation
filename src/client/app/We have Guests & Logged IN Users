@@ -1,0 +1,59 @@
+We have Guests & Logged IN Users
+
+So our Guests only sees the main page state with no save data
+
+render(<Router/>, document.getElementById('container'))
+
+in our server.js:
+
+  import {Router, Route, hashHistory} from 'react-router'
+
+  render((
+    <Router history={hashHistory}>
+      <Route path='/' component={App} />
+    </Router>
+  ), document.getElementById('container'))
+
+
+  Adding in our users, create a NEW User.js file:
+
+  import React from 'react'
+
+  export default React.createClass({
+    render(){
+      return <div>About</div>
+    }
+  })
+
+  also add to the server.js file the following now:
+
+  import Users from './modules/Users'
+  import Users from './modules/Trips'
+
+  render((
+    <Router history={hashHistory}>
+      <Route path='/' component={App} />
+      <Route path='/user' component={Users} />
+      <Route path='/user/trip' component={Trips} />
+    </Router>
+  ), document.getElementById('container'))
+
+
+  In our APP.js file we now add:
+
+  import React from 'react'
+  import { Link } from 'react-router'
+
+  export default React.createClass({
+    render() {
+      return (
+        <div>
+          <h1>User View is here</h1>
+          <ul role="nav">
+            <li><Link to="/user">User</Link></li>
+            <li><Link to="/user/trip">Saved Trips</Link></li>
+          </ul>
+        </div>
+      )
+    }
+  })
