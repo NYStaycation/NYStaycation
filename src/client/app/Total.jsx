@@ -10,8 +10,9 @@ export default class Total extends React.Component{
 
   render(){
     return(
-     <div className="savetrips">
+     <div className="savetrips" >
      <h2>Save your trip!</h2>
+     <div style={{overflow: 'auto', maxHeight: 400}}>
      <input onChange={this.props.logName} type="text" placeholder="Trip Name"/>
      <h3>Where I'm Staying</h3>
       <div className="card">
@@ -38,10 +39,11 @@ export default class Total extends React.Component{
           ))
         }
       </div>
-        <p>Total Trip Cost: ${this.props.tripTotal.total}</p>
-        <p>Current Budget: ${this.props.tripTotal.budget}</p>
+        <p><span className="bolden">Total Trip Cost:</span> ${this.props.tripTotal.total}</p>
+        <p><span className="bolden">Current Budget: </span>${this.props.tripTotal.budget}</p>
         <p className="warning"><strong> {this.props.tripTotal.budgetWatch} </strong> </p>
         <button onClick={this.props.insertTrip} className="btn btn-default">Save Plan</button>
+      </div>
       </div>
       )
   }
