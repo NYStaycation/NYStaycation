@@ -120,41 +120,53 @@ module.exports = {
     })
   },
 
-  deleteHotels(req, res, next){
-
-    _db.none(`
-      DELETE FROM stayhere
-      WHERE stay_email = $1
-      `, [req.params.stay_email])
-
-    .then( ()=>{
-      console.log('DELETE HOTEL');
-      res.rows = req.params.stay_email;
-      next();
+  deleteVisit(req,res,next){
+    _db.none(`DELETE FROM visit WHERE visit_id=$1`,[req.params.id])
+    .then(()=>{
+      next()
     })
     .catch(error=>{
-      console.error('Erro in DELETEING HOTEL', error);
+      console.error('Error in adding deleting', error);
       throw error;
     })
+
   },
 
-    deletePlay(req, res, next){
+  // deleteHotels(req, res, next){
 
-    _db.none(`
-      DELETE FROM playhere
-      WHERE stay_email = $1
-      `, [req.params.stay_email])
+  //   _db.none(`
+  //     DELETE FROM stayhere
+  //     WHERE stay_email = $1
+  //     `, [req.params.stay_email])
 
-    .then( ()=>{
-      console.log('DELETE Activity');
-      res.rows = req.params.stay_email;
-      next();
-    })
-    .catch(error=>{
-      console.error('Error in DELETEING Activity', error);
-      throw error;
-    })
-  },
+  //   .then( ()=>{
+  //     console.log('DELETE HOTEL');
+  //     res.rows = req.params.stay_email;
+  //     next();
+  //   })
+  //   .catch(error=>{
+  //     console.error('Erro in DELETEING HOTEL', error);
+  //     throw error;
+  //   })
+  // },
+
+  //   deletePlay(req, res, next){
+
+  //   _db.none(`
+  //     DELETE FROM playhere
+  //     WHERE stay_email = $1
+  //     `, [req.params.stay_email])
+
+  //   .then( ()=>{
+  //     console.log('DELETE Activity');
+  //     res.rows = req.params.stay_email;
+  //     next();
+  //   })
+  //   .catch(error=>{
+  //     console.error('Error in DELETEING Activity', error);
+  //     throw error;
+  //   })
+  // },
 
 
 }

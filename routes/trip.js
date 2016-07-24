@@ -1,7 +1,7 @@
 'use strict'
 //require express router
 const router = require('express').Router()
-const {getVisits, getHotels, getPlay, addVisit, addHotel, addPlay} = require('../models/users')
+const {getVisits, getHotels, getPlay, addVisit, addHotel, addPlay, deleteVisit} = require('../models/users')
 
 
 // / route
@@ -14,7 +14,7 @@ router.route('/new')
 
 router.route('/:id')
   // .put((req,res)=>res.send(req.params.id))
-  .delete( (req,res)=>res.send(req.params.id))
+  .delete( deleteVisit, (req,res)=>res.send(req.params.id))
 
 
 
