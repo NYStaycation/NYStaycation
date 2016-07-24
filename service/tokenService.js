@@ -2,6 +2,7 @@ const jwt     = require('jsonwebtoken');
 
 function getTokenFromHeader(req) {
   if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') {
+    // console.log(req.headers.authorization.split(' ')[1])
     return req.headers.authorization.split(' ')[1];
   } else if (req.query && req.query.token) {
     return req.query.token;
@@ -13,10 +14,11 @@ function getTokenFromHeader(req) {
 module.exports={
 
   createToken(req,res,next){
-    const {username,user_id}=res.user
+    const {user_email,user_name,user_id}=res.user
+    // console.log(user_email)
     // we should be certain that a user exists by now (res.user)
-    const token = jwt.sign({username,user_id}, 'superSecret', {
-      expiresIn: 30 // expires in 24 hours
+    const token = jwt.sign({user_email,user_name,user_id}, 'superSecret', {
+      expiresIn: 30000 // expires in 24 hours
     });
 
     // return the information including token as JSON
@@ -29,6 +31,7 @@ module.exports={
 
   validateToken(req,res,next){
     const token = getTokenFromHeader(req)
+    // console.log(token)
 
     // no token, die here
     if (!token){
@@ -38,6 +41,7 @@ module.exports={
 
     // token
     jwt.verify(token, 'superSecret', (err, decoded) =>{
+      // console.log(decoded)
       // bad token
       if (err) {
         res.status(401).end()

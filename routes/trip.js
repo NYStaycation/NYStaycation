@@ -1,8 +1,12 @@
 'use strict'
 //require express router
 const router = require('express').Router()
+const tokenService = require('../service/tokenService')
 const {getVisits, getHotels, getPlay, addVisit, addHotel, addPlay, deleteVisit} = require('../models/users')
 
+const sendError = (err,req,res,next)=>res.status(500).json(err)
+
+router.use( tokenService.validateToken )
 
 // / route
 router.route('/all')
@@ -12,9 +16,9 @@ router.route('/new')
   .post(addVisit, addHotel, addPlay, (req,res)=>res.send('INSERTED!'))
 
 
-router.route('/:id')
+router.route('/')
   // .put((req,res)=>res.send(req.params.id))
-  .delete( deleteVisit, (req,res)=>res.send(req.params.id))
+  .delete( deleteVisit, (req,res)=>res.send(req.body.id))
 
 
 

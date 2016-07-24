@@ -1,8 +1,8 @@
-INSERT INTO customers (user_fname, user_lname, user_email, user_pass_digest) VALUES
+INSERT INTO customers (user_name, user_email, user_pass_digest) VALUES
 
-('David','Maul','dmaul12@gmail.com', '12345'),
-('James','Dean','jd@gmail.com', '123'),
-('Marko','Polo','mp@gmail.com','345');
+('dave','dmaul12@gmail.com', '12345'),
+('james','jd@gmail.com', '123'),
+('marco','mp@gmail.com','345');
 
 INSERT INTO stayhere (stay_title, stay_price, stay_link, stay_address, stay_img, stay_email,stay_checkin_date,stay_checkout_date, stay_visit) VALUES
 

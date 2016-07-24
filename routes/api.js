@@ -1,11 +1,8 @@
-const express     = require('express');
-const api         = express.Router();
+const express      = require('express');
+const api          = express.Router();
 
-const tokenService      = require('../service/tokenService')
-
-
-/* get the database middleware */
-const userService = require('../models/user')
+const tokenService = require('../service/tokenService')
+const userService  = require('../models/users')
 
 const sendError = (err,req,res,next)=>res.status(401).json(err)
 

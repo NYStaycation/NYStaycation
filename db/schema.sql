@@ -3,8 +3,7 @@
 DROP TABLE IF EXISTS customers;
 CREATE TABLE customers (
 user_id SERIAL NOT NULL,
-user_fname VARCHAR(50) NOT NULL,
-user_lname VARCHAR(50) NOT NULL,
+user_name VARCHAR NOT NULL,
 user_email VARCHAR UNIQUE PRIMARY KEY NOT NULL,
 user_pass_digest VARCHAR NOT NULL
 );
