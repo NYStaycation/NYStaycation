@@ -15,5 +15,5 @@ npm i --only=dev --ignore-scripts
 webpack -p
 
 # Kill the dev node modules
-# rm -rf node_modules
+rm -rf node_modules
 
