@@ -3,13 +3,16 @@
   "version": "1.0.0",
   "description": "Group project where user can search on zip code and their budget to find things to do and place to stay",
   "main": "server.js",
+  "engines": {
+    "node": "6.2.1"
+  },
+  "private": true,
   "scripts": {
-    "clean": "rm -rf dist",
-    "watch": "webpack --watch",
-    "prebuild": "npm run clean -s; npm install",
-    "build": "webpack --progress --colors",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "clean": "rm -rf dist && rm -rf node_modules",
+    "heroku-prebuild": "scripts/deployReact.sh",
+    "heroku-postbuild": "rm -rf db src scripts starter_resources webpack.config.js .babelrc .gitignore README.md LICENSE",
+    "start": "node server.js",
+    "watch": "webpack -d --watch"
   },
   "keywords": [
     "staycation",
@@ -27,6 +30,7 @@
   "author": "Supritkumar Shah, David Maul, Sasha-Shae Weekes, Fizal Sarif",
   "license": "MIT",
   "dependencies": {
+    "bcrypt": "^0.8.7",
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "morgan": "^1.7.0",
