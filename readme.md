@@ -1,8 +1,8 @@
 #Introduction
 ===
-Have you ever wanted to go somewhere but you’re strapped for cash? Do you love New York and never want to leave?!
+Have you ever wanted to go somewhere but you’re strapped for cash? Do you love your City/Country and never want to leave?!
 
-**NY Staycation** is your one stop place to help you figure out what you can do in whatever ```zip code``` you'd like to visit; within whatever ```budget``` you set. 
+**Staycation** is your one stop place to help you figure out what you can do in whatever ```zip code``` you'd like to visit; within whatever ```budget``` you set. 
 
 ##User Stories
   
@@ -29,23 +29,18 @@ Have you ever wanted to go somewhere but you’re strapped for cash? Do you love
 * PSQL- store our data
 * Express- backend server
   
-####APIs Used 
+####API Used 
 
-  * Foursquare  
-  * Airbnb
-
-
-
+  * [Expedia](http://developer.expedia.com/directory)
 
 
 
 ##General Approach
 
+We began with the idea that it would be nice to offer users a way to plan an entire vacation package (place to stay plus things to do) within their local vicinity. We first attempted to use the AirBnb API and FourSqaure API, however parsing through their data proved to be a challenge. We settled on using the Expedia API as not only was it all inclusive (activities plus hotel locations) but it was a lot more flexible to parse through. 
 
-
-##Installation Instructions
-
-
+##View It Live
+[Staycation](https://enigmatic-crag-84254.herokuapp.com/)
 
 ##Wireframes
 The React Components:
@@ -56,16 +51,15 @@ Single Page App Wireframe Concept
 
 
 ##Unsolved Problems/ Open Issues
-
-
-##References
-
+* Frontend Authentication with React
+(we were able to get our backend server to set tokens, but weren't able in a timely manner to get the tokens to pass through to frontend.)
+*Database - needed constant restructuring
 
 
 ##Developers
 
+  * [David Maul](https://github.com/dmaul12)
+  * [Fizal Sarif](https://github.com/fizal619)
   * [Sasha-Shae Weekes](https://github.com/afroniquely)
   * [Supritkumar Shah](https://github.com/supritshah1289/)
-  * [Fizal Sarif](https://github.com/fizal619)
-  * [David Maul](https://github.com/dmaul12)
 
