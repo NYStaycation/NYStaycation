@@ -9,6 +9,8 @@ import PlayHere         from './PlayHere.jsx'
 import StayHere         from './StayHere.jsx'
 import Total            from './Total.jsx'
 import SearchForm       from './SearchForm.jsx'
+import CreateUserForm   from './CreateUserForm.jsx'
+// import Login            from './Login.jsx'
 import ajax             from '../helpers/ajaxAdapter.js'
 
 
@@ -161,7 +163,34 @@ export default class App extends React.Component{
     ajax.createTrips(newTrip).then(data=>{
         console.log(data)
     })
+
+    let emptyObject = {
+                        name:'',
+                        budget:0,
+                        Stayhere: {
+                            name: '',
+                            averageRate: 0,
+                            fullAddress: '',
+                            picture: '',
+                            link: ''
+                        },
+                        Playhere:[],
+                        total:0,
+                        budgetWatch:'',
+                        email:'dmaul12@gmail.com'
+
+                        }
+
+    this.setState({
+        currentTotal: emptyObject
+    })
+
    }
+
+   createUser(info){
+    console.log('Inside app jsx logging users infor',info)
+   }
+
 
     render(){
         return(
@@ -201,6 +230,15 @@ export default class App extends React.Component{
                         </article>
                     </div>
                 </section>
+
+                <section>
+                    <article className=".col-xs-12 .col-md-8">
+                        <CreateUserForm
+                          createUser={this.createUser.bind(this)}
+                            />
+                    </article>
+                </section>
+
                 <Footer />
             </div>
         )
