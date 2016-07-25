@@ -23,23 +23,19 @@ const CreateUserForm=props=>{
 
     return(
       <div>
-        <h2>Create User </h2>
         <form className="form-inline" onSubmit={userForm}>
           <fieldset className="form-group">
-            <label>User Name :</label>
             <input type="text" className="form-control" name="user_name" placeholder="User name" />
           </fieldset>
 
           <fieldset className="form-group">
-            <label>Email :</label>
             <input type="text" className="form-control" name="user_email" placeholder="Email"/>
           </fieldset>
 
           <fieldset className="form-group">
-            <label>Password :</label>
             <input type="password" className="form-control" name="user_pass_digest" placeholder="Password"/>
           </fieldset>
-          <button type="submit" className="btn btn-default">Submit</button>
+          <button type="submit" className="btn btn-default">Create User</button>
         </form>
       </div>
       )//close return

@@ -18,18 +18,15 @@ const Login=props=>{
 
     return(
       <div>
-        <h2>Login</h2>
-          <form className="form-inline" onSubmit={login}>
+          <form className="form-inline navbar-nav navbar-right" onSubmit={login}>
           <fieldset className="form-group">
-            <label>Email :</label>
-            <input type="text" className="form-control" name="user_email" placeholder="Another input"/>
+            <input type="text" className="form-control" name="user_email" placeholder="Email"/>
           </fieldset>
 
           <fieldset className="form-group">
-            <label>Password :</label>
-            <input type="text" className="form-control" name="user_pass_digest" placeholder="Another input"/>
+            <input type="password" className="form-control" name="user_pass_digest" placeholder="Password"/>
           </fieldset>
-          <button type="submit" className="btn btn-default">Submit</button>
+          <button type="submit" className="btn btn-default">Login</button>
         </form>
       </div>
       )//close return
